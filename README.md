@@ -1,3 +1,5 @@
+## An edit of [meshpreview project](https://github.com/AscendingMan/meshpreview) for using with the older Unity 2018.4
+
 # How to use
 
 Copy `Assets/Editor` and `Assets/Editor Default Resources` folders into your project and the built-in Mesh Inspector will be overridden with the updated one. Should work with Editor versions 2019.3 and up.

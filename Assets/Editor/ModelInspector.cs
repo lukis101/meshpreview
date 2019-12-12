@@ -164,20 +164,29 @@ namespace UnityEditor
             if(!mesh)
                 return;
             
-            if (!mesh.HasVertexAttribute(VertexAttribute.Color))
+            if (mesh.colors.Length == 0)
                 m_Settings.availableDisplayModes[(int)DisplayMode.VertexColor] = false;
-            if (!mesh.HasVertexAttribute(VertexAttribute.Normal))
+            if (mesh.normals.Length == 0)
                 m_Settings.availableDisplayModes[(int)DisplayMode.Normals] = false;
-            if (!mesh.HasVertexAttribute(VertexAttribute.Tangent))
+            if (mesh.tangents.Length == 0)
                 m_Settings.availableDisplayModes[(int)DisplayMode.Tangent] = false;
 
-            int index = 0;
-            for (int i = 4; i < 12; i++)
-            {
-                if (!mesh.HasVertexAttribute((VertexAttribute)i))
-                    m_Settings.availableUVChannels[index] = false;
-                index++;
-            }
+            if (mesh.uv.Length == 0)
+                m_Settings.availableUVChannels[0] = false;
+            if (mesh.uv2.Length == 0)
+                m_Settings.availableUVChannels[1] = false;
+            if (mesh.uv3.Length == 0)
+                m_Settings.availableUVChannels[2] = false;
+            if (mesh.uv4.Length == 0)
+                m_Settings.availableUVChannels[3] = false;
+            if (mesh.uv5.Length == 0)
+                m_Settings.availableUVChannels[4] = false;
+            if (mesh.uv6.Length == 0)
+                m_Settings.availableUVChannels[5] = false;
+            if (mesh.uv7.Length == 0)
+                m_Settings.availableUVChannels[6] = false;
+            if (mesh.uv8.Length == 0)
+                m_Settings.availableUVChannels[7] = false;
         }
         
         public override void OnPreviewSettings()
@@ -585,37 +594,6 @@ namespace UnityEditor
             evt.Use();
         }
 
-        static int ConvertFormatToSize(VertexAttributeFormat format)
-        {
-            switch (format)
-            {
-                case VertexAttributeFormat.Float32:
-                case VertexAttributeFormat.UInt32:
-                case VertexAttributeFormat.SInt32:
-                    return 4;
-                case VertexAttributeFormat.Float16:
-                case VertexAttributeFormat.UNorm16:
-                case VertexAttributeFormat.SNorm16:
-                case VertexAttributeFormat.UInt16:
-                case VertexAttributeFormat.SInt16:
-                    return 2;
-                case VertexAttributeFormat.UNorm8:
-                case VertexAttributeFormat.SNorm8:
-                case VertexAttributeFormat.UInt8:
-                case VertexAttributeFormat.SInt8:
-                    return 1;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(format), format, $"Unknown vertex format {format}");
-            }
-        }
-
-        static string GetAttributeString(VertexAttributeDescriptor attr)
-        {
-            var format = attr.format;
-            var dimension = attr.dimension;
-            return $"{format} x {dimension} ({ConvertFormatToSize(format) * dimension} bytes)";
-        }
-
         static int CalcTotalIndices(Mesh mesh)
         {
             var totalCount = 0;
@@ -656,11 +634,10 @@ namespace UnityEditor
             Mesh mesh = target as Mesh;
             if (mesh == null)
                 return;
-            var attributes = mesh.GetVertexAttributes();
             
-            ShowVertexInfo(mesh, attributes);
+            ShowVertexInfo(mesh);
             ShowIndexInfo(mesh);
-            ShowSkinInfo(mesh, attributes);
+            ShowSkinInfo(mesh);
             ShowBlendShapeInfo(mesh);
             ShowOtherInfo(mesh);
 
@@ -695,7 +672,7 @@ namespace UnityEditor
             EditorGUI.indentLevel--;
         }
 
-        static void ShowSkinInfo(Mesh mesh, VertexAttributeDescriptor[] attributes)
+        static void ShowSkinInfo(Mesh mesh)
         {
             var boneCount = mesh.bindposes.Length;
             if (boneCount <= 0)
@@ -703,14 +680,6 @@ namespace UnityEditor
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField($"Skin: {boneCount} bones", EditorStyles.boldLabel);
-            EditorGUI.indentLevel++;
-            foreach (var a in attributes)
-            {
-                // only list skin related attributes
-                if (a.attribute == VertexAttribute.BlendIndices || a.attribute == VertexAttribute.BlendWeight)
-                    EditorGUILayout.LabelField(a.attribute.ToString(), GetAttributeString(a));
-            }
-            EditorGUI.indentLevel--;
         }
 
         static void ShowIndexInfo(Mesh mesh)
@@ -729,12 +698,11 @@ namespace UnityEditor
 
             for (int i = 0; i < mesh.subMeshCount; i++)
             {
-                var subMesh = mesh.GetSubMesh(i);
-                string topology = subMesh.topology.ToString().ToLowerInvariant();
-                string baseVertex = subMesh.baseVertex == 0 ? "" : ", base vertex " + subMesh.baseVertex;
+                string topology = mesh.GetTopology(i).ToString().ToLowerInvariant();
+                string baseVertex = mesh.GetBaseVertex(i) == 0 ? "" : ", base vertex " + mesh.GetBaseVertex(i);
 
                 var divisor = 3;
-                switch (subMesh.topology)
+                switch (mesh.GetTopology(i))
                 {
                     case MeshTopology.Points: divisor = 1; break;
                     case MeshTopology.Lines: divisor = 2; break;
@@ -743,7 +711,7 @@ namespace UnityEditor
                     case MeshTopology.LineStrip: divisor = 2; break; // technically not correct, but eh
                 }
 
-                var primCount = subMesh.indexCount / divisor;
+                var primCount = mesh.GetIndexCount(i) / divisor;
                 if (subMeshCount > 1)
                 {
                     GUILayout.BeginHorizontal();
@@ -753,7 +721,7 @@ namespace UnityEditor
                     DrawColorRect(rect, tint);
                 }
 
-                EditorGUILayout.LabelField($"#{i}: {primCount} {topology} ({subMesh.indexCount} indices starting from {subMesh.indexStart}){baseVertex}");
+                EditorGUILayout.LabelField($"#{i}: {primCount} {topology} ({mesh.GetIndexCount(i)} indices starting from {mesh.GetIndexStart(i)}){baseVertex}");
                 if (subMeshCount > 1)
                 {
                     GUILayout.EndHorizontal();
@@ -762,24 +730,33 @@ namespace UnityEditor
             EditorGUI.indentLevel--;
         }
 
-        static void ShowVertexInfo(Mesh mesh, VertexAttributeDescriptor[] attributes)
+        static void ShowVertexInfo(Mesh mesh)
         {
-            var vertexSize = attributes.Sum(attr => ConvertFormatToSize(attr.format) * attr.dimension);
-            var bufferSizeStr = EditorUtility.FormatBytes(mesh.vertexCount * vertexSize);
-            EditorGUILayout.LabelField($"Vertices: {mesh.vertexCount} ({bufferSizeStr})", EditorStyles.boldLabel);
+			int vSize = 0;
+            //EditorGUILayout.LabelField($"Vertices: {mesh.vertexCount} ({bufferSizeStr})", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField($"Vertices: {mesh.vertexCount}", EditorStyles.boldLabel);
 
             EditorGUI.indentLevel++;
-            foreach (var a in attributes)
-            {
-                // skin related attributes listed separately
-                if (a.attribute == VertexAttribute.BlendIndices || a.attribute == VertexAttribute.BlendWeight)
-                    continue;
-                var title = a.attribute.ToString();
-                if (title.Contains("TexCoord"))
-                    title = title.Replace("TexCoord", "UV");
-                EditorGUILayout.LabelField(title, GetAttributeString(a));
-            }
+            if (mesh.colors.Length != 0) {
+			EditorGUILayout.LabelField("colors", $"byte x 4 (4 bytes)"); vSize += 4;}
+            if (mesh.normals.Length != 0) {
+                EditorGUILayout.LabelField("normals", $"float x 3 (12 bytes)"); vSize += 12;}
+            if (mesh.tangents.Length != 0) {
+                EditorGUILayout.LabelField("tangents", $"float x 4 (16 bytes)"); vSize += 16;}
+            if (mesh.uv.Length != 0) {
+                EditorGUILayout.LabelField("uv1", $"float x 2 (8 bytes)"); vSize += 8;}
+            if (mesh.uv2.Length != 0) {
+                EditorGUILayout.LabelField("uv2", $"float x 2 (8 bytes)"); vSize += 8;}
+            if (mesh.uv3.Length != 0) {
+                EditorGUILayout.LabelField("uv3", $"float x 2 (8 bytes)"); vSize += 8;}
+            if (mesh.uv4.Length != 0) {
+                EditorGUILayout.LabelField("uv4", $"float x 2 (8 bytes)"); vSize += 8;}
+            if (mesh.uv5.Length != 0) {
+                EditorGUILayout.LabelField("uv5", $"float x 2 (8 bytes)"); vSize += 8;}
             EditorGUI.indentLevel--;
+			
+            var bufferSizeStr = EditorUtility.FormatBytes(mesh.vertexCount * vSize);
+            EditorGUILayout.LabelField($"Total size: ({bufferSizeStr})", EditorStyles.boldLabel);
         }
 
         public void OnDisable()
