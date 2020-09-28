@@ -1,11 +1,414 @@
 fileFormatVersion: 2
 guid: f620d5d9b59a49640b0ff14068f1edac
 ModelImporter:
-  serializedVersion: 20100
-  internalIDToNameTable: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ankle_l
+    100002: ankle_r
+    100004: arm_left
+    100006: arm_right
+    100008: backpack
+    100010: backpack_strap_left
+    100012: backpack_strap_right
+    100014: base
+    100016: base 1
+    100018: bun
+    100020: elbow_l
+    100022: elbow_r
+    100024: hair
+    100026: head
+    100028: head_tip
+    100030: hip_l
+    100032: hip_r
+    100034: hips
+    100036: index1_l
+    100038: index1_r
+    100040: index2_l
+    100042: index2_r
+    100044: index3_l
+    100046: index3_r
+    100048: index4_l
+    100050: index4_r
+    100052: knee_l
+    100054: knee_r
+    100056: middle1_l
+    100058: middle1_r
+    100060: middle2_l
+    100062: middle2_r
+    100064: middle3_l
+    100066: middle3_r
+    100068: middle4_l
+    100070: middle4_r
+    100072: neck1
+    100074: neck2
+    100076: pants
+    100078: pCube6
+    100080: pCube7
+    100082: pCube8
+    100084: pCube9
+    100086: pinky1_l
+    100088: pinky1_r
+    100090: pinky2_l
+    100092: pinky2_r
+    100094: pinky3_l
+    100096: pinky3_r
+    100098: pinky4_l
+    100100: pinky4_r
+    100102: pTorus10
+    100104: pTorus11
+    100106: pTorus12
+    100108: pTorus13
+    100110: pTorus14
+    100112: pTorus15
+    100114: pTorus16
+    100116: pTorus17
+    100118: pTorus18
+    100120: pTorus19
+    100122: pTorus20
+    100124: pTorus21
+    100126: pTorus22
+    100128: pTorus3
+    100130: pTorus4
+    100132: pTorus5
+    100134: pTorus6
+    100136: pTorus7
+    100138: pTorus8
+    100140: pTorus9
+    100142: ring1_l
+    100144: ring1_r
+    100146: ring2_l
+    100148: ring2_r
+    100150: ring3_l
+    100152: ring3_r
+    100154: ring4_l
+    100156: ring4_r
+    100158: root
+    100160: scarf
+    100162: //RootNode
+    100164: Shiro_geometry
+    100166: shoe
+    100168: shoe 1
+    100170: shoe_base:pTorus10
+    100172: shoe_base:pTorus11
+    100174: shoe_base:pTorus12
+    100176: shoe_base:pTorus13
+    100178: shoe_base:pTorus14
+    100180: shoe_base:pTorus15
+    100182: shoe_base:pTorus16
+    100184: shoe_base:pTorus17
+    100186: shoe_base:pTorus18
+    100188: shoe_base:pTorus19
+    100190: shoe_base:pTorus20
+    100192: shoe_base:pTorus21
+    100194: shoe_base:pTorus22
+    100196: shoe_base:pTorus3
+    100198: shoe_base:pTorus4
+    100200: shoe_base:pTorus5
+    100202: shoe_base:pTorus6
+    100204: shoe_base:pTorus7
+    100206: shoe_base:pTorus8
+    100208: shoe_base:pTorus9
+    100210: shoe_left
+    100212: shoe_left1
+    100214: shoe_nose
+    100216: shoe_nose 1
+    100218: shoe_sole
+    100220: shoe_sole 1
+    100222: shoe_tongue
+    100224: shoe_tongue 1
+    100226: shoelace_holes
+    100228: shoelace_holes 1
+    100230: shoulder_l
+    100232: shoulder_r
+    100234: spine1
+    100236: spine2
+    100238: spine3
+    100240: sweater3
+    100242: thumb1_l
+    100244: thumb1_r
+    100246: thumb2_l
+    100248: thumb2_r
+    100250: thumb3_l
+    100252: thumb3_r
+    100254: toe_l
+    100256: toe_r
+    100258: toe_tip_l
+    100260: toe_tip_r
+    100262: undershirt_back
+    100264: undershirt_front
+    100266: wrist_l
+    100268: wrist_r
+    400000: ankle_l
+    400002: ankle_r
+    400004: arm_left
+    400006: arm_right
+    400008: backpack
+    400010: backpack_strap_left
+    400012: backpack_strap_right
+    400014: base
+    400016: base 1
+    400018: bun
+    400020: elbow_l
+    400022: elbow_r
+    400024: hair
+    400026: head
+    400028: head_tip
+    400030: hip_l
+    400032: hip_r
+    400034: hips
+    400036: index1_l
+    400038: index1_r
+    400040: index2_l
+    400042: index2_r
+    400044: index3_l
+    400046: index3_r
+    400048: index4_l
+    400050: index4_r
+    400052: knee_l
+    400054: knee_r
+    400056: middle1_l
+    400058: middle1_r
+    400060: middle2_l
+    400062: middle2_r
+    400064: middle3_l
+    400066: middle3_r
+    400068: middle4_l
+    400070: middle4_r
+    400072: neck1
+    400074: neck2
+    400076: pants
+    400078: pCube6
+    400080: pCube7
+    400082: pCube8
+    400084: pCube9
+    400086: pinky1_l
+    400088: pinky1_r
+    400090: pinky2_l
+    400092: pinky2_r
+    400094: pinky3_l
+    400096: pinky3_r
+    400098: pinky4_l
+    400100: pinky4_r
+    400102: pTorus10
+    400104: pTorus11
+    400106: pTorus12
+    400108: pTorus13
+    400110: pTorus14
+    400112: pTorus15
+    400114: pTorus16
+    400116: pTorus17
+    400118: pTorus18
+    400120: pTorus19
+    400122: pTorus20
+    400124: pTorus21
+    400126: pTorus22
+    400128: pTorus3
+    400130: pTorus4
+    400132: pTorus5
+    400134: pTorus6
+    400136: pTorus7
+    400138: pTorus8
+    400140: pTorus9
+    400142: ring1_l
+    400144: ring1_r
+    400146: ring2_l
+    400148: ring2_r
+    400150: ring3_l
+    400152: ring3_r
+    400154: ring4_l
+    400156: ring4_r
+    400158: root
+    400160: scarf
+    400162: //RootNode
+    400164: Shiro_geometry
+    400166: shoe
+    400168: shoe 1
+    400170: shoe_base:pTorus10
+    400172: shoe_base:pTorus11
+    400174: shoe_base:pTorus12
+    400176: shoe_base:pTorus13
+    400178: shoe_base:pTorus14
+    400180: shoe_base:pTorus15
+    400182: shoe_base:pTorus16
+    400184: shoe_base:pTorus17
+    400186: shoe_base:pTorus18
+    400188: shoe_base:pTorus19
+    400190: shoe_base:pTorus20
+    400192: shoe_base:pTorus21
+    400194: shoe_base:pTorus22
+    400196: shoe_base:pTorus3
+    400198: shoe_base:pTorus4
+    400200: shoe_base:pTorus5
+    400202: shoe_base:pTorus6
+    400204: shoe_base:pTorus7
+    400206: shoe_base:pTorus8
+    400208: shoe_base:pTorus9
+    400210: shoe_left
+    400212: shoe_left1
+    400214: shoe_nose
+    400216: shoe_nose 1
+    400218: shoe_sole
+    400220: shoe_sole 1
+    400222: shoe_tongue
+    400224: shoe_tongue 1
+    400226: shoelace_holes
+    400228: shoelace_holes 1
+    400230: shoulder_l
+    400232: shoulder_r
+    400234: spine1
+    400236: spine2
+    400238: spine3
+    400240: sweater3
+    400242: thumb1_l
+    400244: thumb1_r
+    400246: thumb2_l
+    400248: thumb2_r
+    400250: thumb3_l
+    400252: thumb3_r
+    400254: toe_l
+    400256: toe_r
+    400258: toe_tip_l
+    400260: toe_tip_r
+    400262: undershirt_back
+    400264: undershirt_front
+    400266: wrist_l
+    400268: wrist_r
+    2100000: lambert1
+    2100002: arms1_defaultMat1
+    2100004: shoe_base6_defaultMat1
+    2100006: head_hair_hair_defaultMat1
+    4300000: undershirt_front
+    4300002: undershirt_back
+    4300004: arm_left
+    4300006: arm_right
+    4300008: scarf
+    4300010: sweater3
+    4300012: pants
+    4300014: shoe
+    4300016: shoe_tongue
+    4300018: shoe_sole
+    4300020: shoe_nose
+    4300022: shoe_base:pTorus22
+    4300024: shoe_base:pTorus21
+    4300026: shoe_base:pTorus20
+    4300028: shoe_base:pTorus19
+    4300030: shoe_base:pTorus18
+    4300032: shoe_base:pTorus17
+    4300034: shoe_base:pTorus16
+    4300036: shoe_base:pTorus15
+    4300038: shoe_base:pTorus14
+    4300040: shoe_base:pTorus13
+    4300042: shoe_base:pTorus12
+    4300044: shoe_base:pTorus11
+    4300046: shoe_base:pTorus10
+    4300048: shoe_base:pTorus9
+    4300050: shoe_base:pTorus8
+    4300052: shoe_base:pTorus7
+    4300054: shoe_base:pTorus6
+    4300056: shoe_base:pTorus5
+    4300058: shoe_base:pTorus4
+    4300060: shoe_base:pTorus3
+    4300062: pCube6
+    4300064: pCube7
+    4300066: pCube8
+    4300068: pCube9
+    4300070: backpack_strap_right
+    4300072: backpack_strap_left
+    4300074: shoe
+    4300076: shoe_tongue
+    4300078: shoe_sole
+    4300080: shoe_nose
+    4300082: pTorus22
+    4300084: pTorus21
+    4300086: pTorus20
+    4300088: pTorus19
+    4300090: pTorus18
+    4300092: pTorus17
+    4300094: pTorus16
+    4300096: pTorus15
+    4300098: pTorus14
+    4300100: pTorus13
+    4300102: pTorus12
+    4300104: pTorus11
+    4300106: pTorus10
+    4300108: pTorus9
+    4300110: pTorus8
+    4300112: pTorus7
+    4300114: pTorus6
+    4300116: pTorus5
+    4300118: pTorus4
+    4300120: pTorus3
+    4300122: head
+    4300124: bun
+    4300126: hair
+    9500000: //RootNode
+    13700000: arm_left
+    13700002: arm_right
+    13700004: backpack_strap_left
+    13700006: backpack_strap_right
+    13700008: bun
+    13700010: hair
+    13700012: head
+    13700014: pants
+    13700016: pCube6
+    13700018: pCube7
+    13700020: pCube8
+    13700022: pCube9
+    13700024: pTorus10
+    13700026: pTorus11
+    13700028: pTorus12
+    13700030: pTorus13
+    13700032: pTorus14
+    13700034: pTorus15
+    13700036: pTorus16
+    13700038: pTorus17
+    13700040: pTorus18
+    13700042: pTorus19
+    13700044: pTorus20
+    13700046: pTorus21
+    13700048: pTorus22
+    13700050: pTorus3
+    13700052: pTorus4
+    13700054: pTorus5
+    13700056: pTorus6
+    13700058: pTorus7
+    13700060: pTorus8
+    13700062: pTorus9
+    13700064: scarf
+    13700066: shoe
+    13700068: shoe 1
+    13700070: shoe_base:pTorus10
+    13700072: shoe_base:pTorus11
+    13700074: shoe_base:pTorus12
+    13700076: shoe_base:pTorus13
+    13700078: shoe_base:pTorus14
+    13700080: shoe_base:pTorus15
+    13700082: shoe_base:pTorus16
+    13700084: shoe_base:pTorus17
+    13700086: shoe_base:pTorus18
+    13700088: shoe_base:pTorus19
+    13700090: shoe_base:pTorus20
+    13700092: shoe_base:pTorus21
+    13700094: shoe_base:pTorus22
+    13700096: shoe_base:pTorus3
+    13700098: shoe_base:pTorus4
+    13700100: shoe_base:pTorus5
+    13700102: shoe_base:pTorus6
+    13700104: shoe_base:pTorus7
+    13700106: shoe_base:pTorus8
+    13700108: shoe_base:pTorus9
+    13700110: shoe_nose
+    13700112: shoe_nose 1
+    13700114: shoe_sole
+    13700116: shoe_sole 1
+    13700118: shoe_tongue
+    13700120: shoe_tongue 1
+    13700122: sweater3
+    13700124: undershirt_back
+    13700126: undershirt_front
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -38,7 +441,6 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -46,22 +448,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -70,10 +468,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -83,16 +481,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

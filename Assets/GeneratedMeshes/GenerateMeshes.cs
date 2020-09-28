@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Rendering;
 
+#if UNITY_2019_3_OR_NEWER
 public class GenerateMeshes : MonoBehaviour
 {
     [MenuItem("Assets/Generate A Bunch of Meshes")]
@@ -142,3 +143,4 @@ public class GenerateMeshes : MonoBehaviour
         return m;
     }
 }
+#endif
