@@ -920,16 +920,15 @@ namespace UnityEditor
                 EditorGUILayout.LabelField("normals", $"float x 3 (12 bytes)"); vSize += 12;}
             if (mesh.tangents.Length != 0) {
                 EditorGUILayout.LabelField("tangents", $"float x 4 (16 bytes)"); vSize += 16;}
-            if (mesh.uv.Length != 0) {
-                EditorGUILayout.LabelField("uv1", $"float x 2 (8 bytes)"); vSize += 8;}
-            if (mesh.uv2.Length != 0) {
-                EditorGUILayout.LabelField("uv2", $"float x 2 (8 bytes)"); vSize += 8;}
-            if (mesh.uv3.Length != 0) {
-                EditorGUILayout.LabelField("uv3", $"float x 2 (8 bytes)"); vSize += 8;}
-            if (mesh.uv4.Length != 0) {
-                EditorGUILayout.LabelField("uv4", $"float x 2 (8 bytes)"); vSize += 8;}
-            if (mesh.uv5.Length != 0) {
-                EditorGUILayout.LabelField("uv5", $"float x 2 (8 bytes)"); vSize += 8;}
+				
+            for (int i = 0; i < 8; i++) {
+				List<Vector4> uvs = new List<Vector4>();
+				mesh.GetUVs(i, uvs);
+				if (uvs.Count != 0) {
+					EditorGUILayout.LabelField($"uv{i+1}", "float x 4 (16 bytes)");
+					vSize += 16;
+				}
+			}
             EditorGUI.indentLevel--;
 			
             var bufferSizeStr = EditorUtility.FormatBytes(mesh.vertexCount * vSize);
